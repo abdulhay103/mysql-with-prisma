@@ -9,13 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "next": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {
     "autoprefixer": "latest",
     "postcss": "latest",
+    "prisma": "^5.3.1",
     "tailwindcss": "latest"
   }
 }
