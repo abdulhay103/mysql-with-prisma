@@ -33,17 +33,11 @@ export function NavBar() {
                             <Link className=" px-3 py-2" href="/">
                                 Home
                             </Link>
-                            <Link className=" px-3 py-2" href="/team">
-                                Team
+                            <Link className=" px-3 py-2" href="/about">
+                                About
                             </Link>
-                            <Link className=" px-3 py-2" href="/services">
-                                Services
-                            </Link>
-                            <Link className=" px-3 py-2" href="/projects">
-                                Projects
-                            </Link>
-                            <Link className=" px-3 py-2" href="/testimonials">
-                                Testimonials
+                            <Link className=" px-3 py-2" href="/blog">
+                                Blog
                             </Link>
                             <Link
                                 className=" px-4 py-2 border-2 border-green-500 hover:border-2 bg-transparent hover:bg-green-500 hover:text-white rounded-lg"
