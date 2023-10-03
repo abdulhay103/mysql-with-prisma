@@ -22,20 +22,23 @@ model user {
   updated_at DateTime @default(now()) @db.Timestamp(0)
 
   // Ctreate relationship
-  categories categories[]
-  customers  customers[]
-  products   products[]
+  categories       categories[]
+  customers        customers[]
+  products         products[]
+  invoices         invoices[]
+  invoice_products invoice_products[]
 }
 
 model categories {
-  id         Int      @id @default(autoincrement())
+  id         BigInt   @id @default(autoincrement())
   name       String
   user_id    BigInt
   created_at DateTime @default(now()) @db.Timestamp()
   updated_at DateTime @default(now()) @db.Timestamp()
 
   // Ctreate relationship
-  user user? @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  products products[]
+  user     user?      @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model customers {
@@ -48,7 +51,8 @@ model customers {
   updated_at DateTime @default(now()) @db.Timestamp(0)
 
   // Ctreate relationship
-  user user? @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  invoices invoices[]
+  user     user?      @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model products {
@@ -63,5 +67,40 @@ model products {
   updated_at  DateTime @default(now()) @db.Timestamp()
 
   // Ctreate relationship
-  user user? @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  invoice_products invoice_products[]
+  user             user?              @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  categories       categories?        @relation(fields: [category_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+}
+
+model invoices {
+  id          BigInt   @id @default(autoincrement())
+  total       String
+  discount    String
+  vat         String
+  payable     String
+  user_id     BigInt
+  customer_id BigInt
+  created_at  DateTime @default(now()) @db.Timestamp()
+  updated_at  DateTime @default(now()) @db.Timestamp()
+
+  // Ctreate relationship
+  invoice_products invoice_products[]
+  user             user?              @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  customers        customers?         @relation(fields: [customer_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+}
+
+model invoice_products {
+  id         BigInt   @id @default(autoincrement())
+  invoice_id BigInt
+  product_id BigInt
+  user_id    BigInt
+  qty        String
+  sale_price String
+  create_at  DateTime @default(now()) @db.Timestamp(0)
+  updatwd_at DateTime @default(now()) @db.Timestamp(0)
+
+  // Ctreate relationship
+  invoices invoices? @relation(fields: [invoice_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user     user?     @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  products products? @relation(fields: [product_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
