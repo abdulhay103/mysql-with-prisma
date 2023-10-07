@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE `user` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `firstName` VARCHAR(191) NOT NULL,
     `lastName` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
@@ -16,9 +16,9 @@ CREATE TABLE `user` (
 
 -- CreateTable
 CREATE TABLE `categories` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
-    `user_id` BIGINT NOT NULL,
+    `user_id` BIGINT UNSIGNED NOT NULL,
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
@@ -27,11 +27,11 @@ CREATE TABLE `categories` (
 
 -- CreateTable
 CREATE TABLE `customers` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
     `mobile` VARCHAR(191) NOT NULL,
-    `user_id` BIGINT NOT NULL,
+    `user_id` BIGINT UNSIGNED NOT NULL,
     `created_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `updated_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
 
@@ -40,9 +40,9 @@ CREATE TABLE `customers` (
 
 -- CreateTable
 CREATE TABLE `products` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `user_id` BIGINT NOT NULL,
-    `category_id` BIGINT NOT NULL,
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `user_id` BIGINT UNSIGNED NOT NULL,
+    `category_id` BIGINT UNSIGNED NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `price` VARCHAR(191) NOT NULL,
     `unit` VARCHAR(191) NOT NULL,
@@ -55,13 +55,13 @@ CREATE TABLE `products` (
 
 -- CreateTable
 CREATE TABLE `invoices` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `total` VARCHAR(191) NOT NULL,
     `discount` VARCHAR(191) NOT NULL,
     `vat` VARCHAR(191) NOT NULL,
     `payable` VARCHAR(191) NOT NULL,
-    `user_id` BIGINT NOT NULL,
-    `customer_id` BIGINT NOT NULL,
+    `user_id` BIGINT UNSIGNED NOT NULL,
+    `customer_id` BIGINT UNSIGNED NOT NULL,
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
@@ -70,10 +70,10 @@ CREATE TABLE `invoices` (
 
 -- CreateTable
 CREATE TABLE `invoice_products` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `invoice_id` BIGINT NOT NULL,
-    `product_id` BIGINT NOT NULL,
-    `user_id` BIGINT NOT NULL,
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `invoice_id` BIGINT UNSIGNED NOT NULL,
+    `product_id` BIGINT UNSIGNED NOT NULL,
+    `user_id` BIGINT UNSIGNED NOT NULL,
     `qty` VARCHAR(191) NOT NULL,
     `sale_price` VARCHAR(191) NOT NULL,
     `create_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
