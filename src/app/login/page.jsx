@@ -17,14 +17,17 @@ export default function Login() {
     };
 
     const onClickHandler = async () => {
+        setLoading(true);
         const config = { method: "POST", body: JSON.stringify(inputValues) };
         const fetchData = await fetch("api/login", config);
         const res = await fetchData.json();
+        const email = res.email;
+        const password = res.password;
 
-        if (!res.ok) {
-            console.log("Data Fatching Fail");
+        if (!res.status === "success") {
+            throw new Error("Data Fatching Fail");
         } else {
-            alert("success");
+            console.log("Email==>", email, "Pasword ===>", password);
         }
     };
     return (
