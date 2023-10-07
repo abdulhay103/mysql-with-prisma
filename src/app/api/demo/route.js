@@ -5,33 +5,16 @@ export async function POST() {
     try {
         const prisma = new PrismaClient();
         //Insert One
-        await prisma.user.createMany({
-            data: [
-                {
-                    firstName: "Sabuj",
-                    lastName: "Mia",
-                    email: "sabuj@gmail.com",
-                    mobile: "01700001",
-                    password: "abc-124",
-                    otp: "1122",
-                },
-                {
-                    firstName: "Abdul",
-                    lastName: "Kuddus",
-                    email: "kuddus@gmail.com",
-                    mobile: "01700010",
-                    password: "abc-10",
-                    otp: "1100",
-                },
-                {
-                    firstName: "Sumon",
-                    lastName: "Ahmed",
-                    email: "sumon@gmail.com",
-                    mobile: "0170002233",
-                    password: "abc-12322",
-                    otp: "2233",
-                },
-            ],
+        await prisma.user.update({
+            where: { id: 1 },
+            data: {
+                firstName: "Rejaul",
+                lastName: "Karim",
+                email: "reza@gmail.com",
+                mobile: "017001524",
+                password: "abc-000",
+                otp: "0000",
+            },
         });
         return NextResponse.json({
             status: "Success",
