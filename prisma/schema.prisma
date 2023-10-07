@@ -11,7 +11,7 @@ datasource db {
 }
 
 model user {
-  id         BigInt   @id @default(autoincrement())
+  id         BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
   firstName  String
   lastName   String
   email      String   @unique
@@ -30,9 +30,9 @@ model user {
 }
 
 model categories {
-  id         BigInt   @id @default(autoincrement())
+  id         BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
   name       String
-  user_id    BigInt
+  user_id    BigInt   @db.UnsignedBigInt
   created_at DateTime @default(now()) @db.Timestamp()
   updated_at DateTime @default(now()) @db.Timestamp()
 
@@ -42,11 +42,11 @@ model categories {
 }
 
 model customers {
-  id         BigInt   @id @default(autoincrement())
+  id         BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
   name       String
   email      String
   mobile     String
-  user_id    BigInt
+  user_id    BigInt   @db.UnsignedBigInt
   created_at DateTime @default(now()) @db.Timestamp(0)
   updated_at DateTime @default(now()) @db.Timestamp(0)
 
@@ -56,9 +56,9 @@ model customers {
 }
 
 model products {
-  id          BigInt   @id @default(autoincrement())
-  user_id     BigInt
-  category_id BigInt
+  id          BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  user_id     BigInt   @db.UnsignedBigInt
+  category_id BigInt   @db.UnsignedBigInt
   name        String
   price       String
   unit        String
@@ -73,13 +73,13 @@ model products {
 }
 
 model invoices {
-  id          BigInt   @id @default(autoincrement())
+  id          BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
   total       String
   discount    String
   vat         String
   payable     String
-  user_id     BigInt
-  customer_id BigInt
+  user_id     BigInt   @db.UnsignedBigInt
+  customer_id BigInt   @db.UnsignedBigInt
   created_at  DateTime @default(now()) @db.Timestamp()
   updated_at  DateTime @default(now()) @db.Timestamp()
 
@@ -90,10 +90,10 @@ model invoices {
 }
 
 model invoice_products {
-  id         BigInt   @id @default(autoincrement())
-  invoice_id BigInt
-  product_id BigInt
-  user_id    BigInt
+  id         BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  invoice_id BigInt   @db.UnsignedBigInt
+  product_id BigInt   @db.UnsignedBigInt
+  user_id    BigInt   @db.UnsignedBigInt
   qty        String
   sale_price String
   create_at  DateTime @default(now()) @db.Timestamp(0)
