@@ -7,6 +7,7 @@ export async function POST(req) {
     if (email) {
         return NextResponse.json({
             status: "success",
+            data: email,
         });
     } else {
         return NextResponse.json({
