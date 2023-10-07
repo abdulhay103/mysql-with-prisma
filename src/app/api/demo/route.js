@@ -5,15 +5,33 @@ export async function POST() {
     try {
         const prisma = new PrismaClient();
         //Insert One
-        await prisma.user.create({
-            data: {
-                firstName: "Sumit2",
-                lastName: "Saha",
-                email: "sumit122@gmail.com",
-                mobile: "01700000",
-                password: "abc-123",
-                otp: "123",
-            },
+        await prisma.user.createMany({
+            data: [
+                {
+                    firstName: "Sabuj",
+                    lastName: "Mia",
+                    email: "sabuj@gmail.com",
+                    mobile: "01700001",
+                    password: "abc-124",
+                    otp: "1122",
+                },
+                {
+                    firstName: "Abdul",
+                    lastName: "Kuddus",
+                    email: "kuddus@gmail.com",
+                    mobile: "01700010",
+                    password: "abc-10",
+                    otp: "1100",
+                },
+                {
+                    firstName: "Sumon",
+                    lastName: "Ahmed",
+                    email: "sumon@gmail.com",
+                    mobile: "0170002233",
+                    password: "abc-12322",
+                    otp: "2233",
+                },
+            ],
         });
         return NextResponse.json({
             status: "Success",
@@ -25,14 +43,3 @@ export async function POST() {
         });
     }
 }
-
-// await prisma.products.create({
-//     data: {
-//         // user_id: 1,
-//         // category_id: 1,
-//         name: "Apple",
-//         price: "250",
-//         unit: "10",
-//         img_url: "abd",
-//     },
-// });
