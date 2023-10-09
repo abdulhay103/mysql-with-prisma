@@ -13,6 +13,7 @@ export async function POST(req) {
         });
         return NextResponse.json({
             status: "Registration Success",
+            result: reqBody,
         });
     } catch (error) {
         return NextResponse.json({
