@@ -7,12 +7,11 @@ export async function POST() {
         //Insert One
         await prisma.user.create({
             data: {
-                firstName: "Sumit2",
+                firstName: "Sumit",
                 lastName: "Saha",
                 email: "sumit122@gmail.com",
                 mobile: "01700000",
                 password: "abc-123",
-                otp: "123",
             },
         });
         return NextResponse.json({
@@ -25,14 +24,3 @@ export async function POST() {
         });
     }
 }
-
-// await prisma.products.create({
-//     data: {
-//         // user_id: 1,
-//         // category_id: 1,
-//         name: "Apple",
-//         price: "250",
-//         unit: "10",
-//         img_url: "abd",
-//     },
-// });
