@@ -2,6 +2,9 @@ import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function POST() {
+    BigInt.prototype.toString = function () {
+        return this.toString();
+    };
     try {
         const prisma = new PrismaClient();
         //Insert One
