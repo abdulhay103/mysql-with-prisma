@@ -9,7 +9,7 @@ export async function POST() {
             data: {
                 firstName: "Sumit",
                 lastName: "Saha",
-                email: "sumit122@gmail.com",
+                email: "sumit123@gmail.com",
                 mobile: "01700000",
                 password: "abc-123",
             },
