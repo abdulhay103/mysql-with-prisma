@@ -48,6 +48,8 @@ export default function Register() {
                 setAlert("Mobile Number Is Empty");
             } else if (password.length == 0) {
                 setAlert("Password Is Empty");
+            } else if (resBody.status === "Registration Fail") {
+                toast.error(resBody.status);
             } else {
                 toast.success(resBody.status);
                 router.replace("/login");
