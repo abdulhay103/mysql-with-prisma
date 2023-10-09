@@ -28,7 +28,6 @@ export default function Login() {
         try {
             const response = await fetch("/api/login", config);
             const data = await response.json();
-            let email = data["email"];
 
             if (data.error) {
                 // Handle server-side error
@@ -38,10 +37,8 @@ export default function Login() {
             } else if (password.length == 0) {
                 alert("Invalid Password");
             } else {
-                console.log("Login Successful");
-                toast.success(email);
+                toast.success("Login Successful");
                 router.replace("/dashboard");
-                // You can navigate to another page here
             }
         } catch (error) {
             // Handle network error
