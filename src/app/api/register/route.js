@@ -2,13 +2,18 @@ import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
+    BigInt.prototype.toString = function () {
+        return this.toString();
+    };
     try {
         const prisma = new PrismaClient();
         const reqBody = await req.json();
-        const user = await prisma.user.create({ data: reqBody });
+        await prisma.user.create({
+            data: reqBody,
+        });
         return NextResponse.json({
             status: "Registration Success",
-            data: user,
+            result: reqBody,
         });
     } catch (error) {
         return NextResponse.json({
