@@ -7,13 +7,17 @@ export async function POST(req) {
     };
     try {
         const prisma = new PrismaClient();
-        const reqBody = await req.json();
-        await prisma.user.create({
-            data: reqBody,
+        // const reqBody = await req.json();
+        let user = await prisma.profile.create({
+            data: {
+                firstName: "Ok",
+                lastName: "test",
+                mobile: "123",
+            },
         });
         return NextResponse.json({
             status: "Registration Success",
-            result: reqBody,
+            result: user,
         });
     } catch (error) {
         return NextResponse.json({
