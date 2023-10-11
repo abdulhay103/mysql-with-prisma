@@ -38,7 +38,7 @@ model categories {
 
   // Ctreate relationship
   products products[]
-  user     user?      @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user     user       @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model customers {
@@ -52,7 +52,7 @@ model customers {
 
   // Ctreate relationship
   invoices invoices[]
-  user     user?      @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user     user       @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model products {
@@ -68,8 +68,8 @@ model products {
 
   // Ctreate relationship
   invoice_products invoice_products[]
-  user             user?              @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  categories       categories?        @relation(fields: [category_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user             user               @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  categories       categories         @relation(fields: [category_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model invoices {
@@ -85,8 +85,8 @@ model invoices {
 
   // Ctreate relationship
   invoice_products invoice_products[]
-  user             user?              @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  customers        customers?         @relation(fields: [customer_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user             user               @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  customers        customers          @relation(fields: [customer_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model invoice_products {
@@ -100,7 +100,7 @@ model invoice_products {
   updatwd_at DateTime @default(now()) @db.Timestamp(0)
 
   // Ctreate relationship
-  invoices invoices? @relation(fields: [invoice_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  user     user?     @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  products products? @relation(fields: [product_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  invoices invoices @relation(fields: [invoice_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user     user     @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  products products @relation(fields: [product_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
